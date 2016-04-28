@@ -1,0 +1,10 @@
+{
+  "modules": "modules",
+  "upLoadDir": "public/uploads",
+  
+  "renderSettings": {
+    "autoescape": true,
+    "cache": "memory",
+    "ext": "html"
+  }
+}
