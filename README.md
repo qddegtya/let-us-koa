@@ -143,6 +143,24 @@ let-us-koa自动为你处理了这块中间件的加载逻辑
 
 它表示，该路由将经过time,log中间件，对应的源文件就是middlewares下的同名文件，当然，你可以在全局的app.conf.g.json中更改这个配置
 
+### 关于渲染方法的挂载
+
+如果你的某个子模块需要挂载渲染方法，那你必须显式地在子模块app.conf.json中声明needRender选项
+
+```
+{
+  "routes": [
+    "GET#/#getHomePage"
+  ],
+  "active": true,
+  "needRender": true
+}
+```
+
+这样，let-us-koa就会自动为你挂载这个render方法。
+
+idea: 比如一些API服务模块，可能不需要渲染服务，那就没有必要构建render
+
 ### 静态资源托管
 
 默认托管在种子项目根目录下的public
