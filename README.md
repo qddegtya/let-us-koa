@@ -174,6 +174,10 @@ idea: 比如一些API服务模块，可能不需要渲染服务，那就没有�
 
 ![](./preview/portal.png)
 
-同时，希望给学习koa的初学者提供一个这样的脚手架，让你可以快速入门。
+同时，希望给正在学习koa的你提供一个这样的脚手架，让你可以快速起手。
 
 So, Let us Koa!
+
+### Thanks
+
+[Koa.js](https://github.com/koajs/koa)
