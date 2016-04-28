@@ -1,7 +1,9 @@
 {
   "modules": "modules",
   "upLoadDir": "public/uploads",
-  
+  "middlewareDir": "middlewares",
+  "subModuleViewPathName": "views",
+
   "renderSettings": {
     "autoescape": true,
     "cache": "memory",

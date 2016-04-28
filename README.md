@@ -21,9 +21,12 @@ What we need
 
 我希望只通过一个最小化的"容器"去启动一个应用，它大概只需要以下几个功能就可以了，重要的是，它的目录结构应该是清晰的，可维护的:
 
+核心思想：**模块即同名文件**
+
 * 自动根据模块级目录生成路由
 * 模块可插拔
-* 脚手架只需要router,template,debug就可以了
+* 支持路由级中间件自动加载
+* 脚手架只需要支持router,render,debug就可以了
 
 所以，Let-us-koa的原理非常简单，如果你想快速跑起来一个koa应用，你可以这么做:
 
@@ -94,32 +97,57 @@ module.exports = {
 
 ```
 {
-  // 模块加载目录
+  // 子模块目录
   "modules": "modules",
 
   // 上传目录
   "upLoadDir": "public/uploads",
 
-  // 渲染设置
-  // let-us-koa 默认为你选择swig模板引擎
+  // 自定义中间件存放目录
+  "middlewareDir": "middlewares",
+
+  // 子模块渲染服务的view path
+  "subModuleViewPathName": "views",
+
+  // 全局渲染选项
   "renderSettings": {
     "autoescape": true,
     "cache": "memory",
     "ext": "html"
   }
 }
+
 ```
 
 
 ### 中间件
 
-你可以在项目下创建一个middlewares目录，里面放置你自定义的中间件，let-us-koa没有为你在这块做自动加载和特殊处理，推荐把中间件加载写在middleware.js里
+**应用级中间件**
+
+推荐把加载逻辑写进middleware.js里
+
+**路由级中间件**
+
+let-us-koa自动为你处理了这块中间件的加载逻辑
+
+你可以参考下面的配置:
+
+```
+{
+  "routes": [
+    "time|log|GET#/version#getApiVersion"
+  ],
+  "active": true
+}
+```
+
+它表示，该路由将经过time,log中间件，对应的源文件就是middlewares下的同名文件，当然，你可以在全局的app.conf.g.json中更改这个配置
 
 ### 静态资源托管
 
 默认托管在种子项目根目录下的public
 
-??
+用途
 =======
 
 一个"尽量最小化"的基于koa的容器，其实就可以跑起来一些小应用，这些应用也许不需要持久化存储的支持，只需要一个简单的渲染服务，比如你想做一个内部的研发平台导航站点，俗称'portal'，当然，你也可以让let-us-koa支持复杂的功能。

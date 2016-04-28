@@ -25,14 +25,28 @@ module.exports = function(build) {
       for(let i = 0;i<_modules.length;i++) {
         let _currentModule = _modules[i].name
         debug(`尝试加载${root}/${_currentModule}子模块`)
-        let _childModuleConfig = _loadModule(path.join(root, _currentModule, 'app.conf.json'))
-        let _childModuleControllers = _loadModule(path.join(root, _currentModule, 'controllers.js'))
 
-        if(_childModuleConfig.active && _childModuleConfig && _childModuleControllers) {
-          build(_childModuleConfig.routes, _childModuleControllers, _currentModule, path.join(root, _currentModule))
+        let _childModuleConfig = _loadModule(
+          path.join(root, _currentModule, 'app.conf.json')
+        )
+          , _childModuleControllers = _loadModule(
+            path.join(root, _currentModule, 'controllers.js')
+          )
+
+        if(
+          _childModuleConfig.active
+          && _childModuleConfig
+          && _childModuleControllers
+        ) {
+          build(
+            _childModuleConfig.routes,
+            _childModuleControllers,
+            _currentModule,
+            path.join(root, _currentModule),
+            _childModuleConfig
+          )
         }
       }
     })
   }
 }
-
