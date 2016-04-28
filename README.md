@@ -27,8 +27,10 @@ What we need
 
 所以，Let-us-koa的原理非常简单，如果你想快速跑起来一个koa应用，你可以这么做:
 
-Install
-========
+Play
+======
+
+### Install
 
 ```
 $ git clone https://github.com/qddegtya/let-us-koa
@@ -36,15 +38,13 @@ $ cd let-us-koa
 $ npm install
 ```
 
-Run!
-=======
+### Run!
 
 ```
 $ npm run start
 ```
 
-新增一个模块
-==========
+### 新增一个模块
 
 在modules下面新建目录即可，目录名称就是模块加载器自动prefix的一级路由名称，比如我们这里的api和home
 
@@ -62,8 +62,7 @@ app.conf.json // 模块配置文件
 controllers.js // 控制器
 ```
 
-app.conf.json
-===========
+### app.conf.json
 
 ```
 {
@@ -76,8 +75,7 @@ app.conf.json
 }
 ```
 
-模块下的controllers
-==================
+### 模块下的controllers
 
 ```
 'use strict'
@@ -92,8 +90,8 @@ module.exports = {
 }
 ```
 
-全局配置
-=============
+### 全局配置
+
 ```
 {
   // 模块加载目录
@@ -113,13 +111,15 @@ module.exports = {
 ```
 
 
-中间件
-======
+### 中间件
 
 你可以在项目下创建一个middlewares目录，里面放置你自定义的中间件，let-us-koa没有为你在这块做自动加载和特殊处理，推荐把中间件加载写在middleware.js里
 
+### 静态资源托管
 
-有何用
+默认托管在种子项目根目录下的public
+
+??
 =======
 
 一个"尽量最小化"的基于koa的容器，其实就可以跑起来一些小应用，这些应用也许不需要持久化存储的支持，只需要一个简单的渲染服务，比如你想做一个内部的研发平台导航站点，俗称'portal'，当然，你也可以让let-us-koa支持复杂的功能。
