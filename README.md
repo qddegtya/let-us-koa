@@ -28,7 +28,7 @@ What we need
 * 支持路由级中间件自动加载
 * 脚手架只需要支持router,render,debug就可以了
 
-所以，Let-us-koa的原理非常简单，如果你想快速跑起来一个koa应用，你可以这么做:
+所以，let-us-koa的原理非常简单，如果你想快速跑起来一个koa应用，你可以这么做:
 
 Play
 ======
